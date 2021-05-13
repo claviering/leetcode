@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "outDir": "out",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [],
+    "allowSyntheticDefaultImports": true,
+  },
+  "include": [
+    "./**/*.ts",
+  ]
+}
