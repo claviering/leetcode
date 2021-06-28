@@ -1,1 +1,1 @@
-# TypeScript 刷 LeetCode
+# JavaScript/TypeScript 刷 LeetCode
