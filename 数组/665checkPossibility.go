@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func ascending(nums []int) bool {
-	copynums := make([]int, len(nums))
-	copy(copynums, nums)
+	cur := nums[0]
 	change := 1
-	for i := 0; i < len(copynums)-1; i++ {
-		if copynums[i] > copynums[i+1] {
+	for i := 1; i <= len(nums)-1; i++ {
+		if cur > nums[i] {
 			change--
-			copynums[i+1] = copynums[i] // 改后一个元素
+		} else {
+			cur = nums[i]
 		}
 		if change == -1 {
 			return false
@@ -18,13 +18,13 @@ func ascending(nums []int) bool {
 	return true
 }
 func descending(nums []int) bool {
-	copynums := make([]int, len(nums))
-	copy(copynums, nums)
+	cur := nums[len(nums)-1]
 	change := 1
-	for i := len(copynums) - 1; i > 0; i-- {
-		if copynums[i-1] > copynums[i] {
+	for i := len(nums) - 2; i >= 0; i-- {
+		if nums[i] > cur {
 			change--
-			copynums[i-1] = copynums[i] // 改前一个元素
+		} else {
+			cur = nums[i]
 		}
 		if change == -1 {
 			return false
@@ -34,8 +34,11 @@ func descending(nums []int) bool {
 }
 
 func checkPossibility(nums []int) bool {
-	res := ascending(nums) || descending(nums)
-	return res
+	if ascending(nums) {
+		return true
+	} else {
+		return descending(nums)
+	}
 }
 
 func main() {
