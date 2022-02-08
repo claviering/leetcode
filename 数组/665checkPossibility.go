@@ -34,11 +34,7 @@ func descending(nums []int) bool {
 }
 
 func checkPossibility(nums []int) bool {
-	if ascending(nums) {
-		return true
-	} else {
-		return descending(nums)
-	}
+	return ascending(nums) || descending(nums)
 }
 
 func main() {
