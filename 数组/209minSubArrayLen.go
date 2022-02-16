@@ -1,17 +1,22 @@
 package main
 
 func search(nums []int, left int, right int, target int) int {
-	for left < right {
+	for left <= right {
 		mid := (left + right) / 2
-		if target == nums[mid] {
+		value := nums[mid]
+		if target == value {
 			return mid
-		} else if target < nums[mid] {
-			right = mid
-		} else if target > nums[mid] {
-			left = mid
+		} else if target < value {
+			right = mid - 1
+		} else if target > value {
+			left = mid + 1
 		}
 	}
-	return -1
+	if left < len(nums) {
+		return left
+	} else {
+		return -1
+	}
 }
 func min(a int, b int) int {
 	if a < b {
@@ -29,11 +34,18 @@ func minSubArrayLen(target int, nums []int) int {
 	res := l + 1
 	for i := 0; i < l+1; i++ {
 		index := search(sum, i, l, sum[i]+target)
-		res = min(res, index-i)
+		if index != -1 {
+			res = min(res, index-i)
+		}
 	}
 	if res == l+1 {
 		return 0
 	} else {
 		return res
 	}
+}
+
+func main() {
+	res := minSubArrayLen(11, []int{1, 2, 3, 4, 5})
+	print(res)
 }
