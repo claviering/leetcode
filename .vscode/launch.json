@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch js",
       "program": "${file}",
       // "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": [
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "name": "Launch Package",
+      "name": "Launch go",
       "type": "go",
       "request": "launch",
       "mode": "auto",
