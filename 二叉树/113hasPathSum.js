@@ -16,29 +16,19 @@ var pathSum = function (root, targetSum) {
   let res = [];
   if (!root) return result;
   function help(root, targetSum) {
-    res.push(root.val);
+    res.push(root && root.val);
+    if (!root) return;
     if (!root.left && !root.right && targetSum === root.val) {
       result.push(res.slice());
     }
     // 有负数，不能判断大小， && root.left.val <= targetSum - root.val
-    if (root.left) {
-      help(root.left, targetSum - root.val);
-      res.pop();
-    }
+    help(root.left, targetSum - root.val);
+    res.pop();
     // 有负数，不能判断大小， && root.right.val <= targetSum - root.val
-    if (root.right) {
-      help(root.right, targetSum - root.val);
-      res.pop();
-    }
+    help(root.right, targetSum - root.val);
+    res.pop();
   }
   help(root, targetSum);
   return result;
 };
 
-let root = {
-  val: -2,
-  right: {
-    val: -3,
-  },
-};
-pathSum(root, -5);
