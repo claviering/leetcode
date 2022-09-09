@@ -22,10 +22,8 @@ var connect = function (root) {
       let node = queue.shift();
       if (leftNode) {
         leftNode.next = node;
-        leftNode = node;
-      } else {
-        leftNode = node;
       }
+      leftNode = node;
       if (node.left) {
         queue.push(node.left);
       }
